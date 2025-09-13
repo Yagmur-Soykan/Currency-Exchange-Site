@@ -4,116 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Döviz Kuru Uygulaması</title>
+    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-
-    <style>
-
-        body{
-            background-image:url("dolar2.png");
-          
-        }
-
-        #container {
-            display: grid;
-            place-items: center; /* Hem yatayda hem dikeyde ortalamak için */
-            height: 70vh;       /* Ekranın yüksekliği kadar */
-        }
-
-        #main{
-            background-color:white;
-            display:flex;
-            justify-content:center;
-            align-items:center;
-            flex-direction:column;
-            border:10px solid #50883f;
-            padding:45px 70px;
-            margin:170px auto 0;
-            width:35%;
-        }
-
-        .header-wrapper{
-            color:rgb(138, 177, 138);
-            margin-bottom:30px;
-            font-size:25px;
-            font-weight:bolder;
-            font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
-        }
-
-        .content-wrapper input,select{
-            text-align:center;
-            Width:20%;
-            padding:10px;
-            font-size:20px;
-            padding-left:10px;
-            border:2px solid rgb(138, 177, 138);
-        }
-
-        i{
-            color:rgb(138, 177, 138);
-            font-size:30px;
-            padding:5px;
-        }
-
-        /*RESPONSIVE DESIGN*/
-        @media (min-width: 345px) and (max-width: 700px) {
-            #main{
-            padding:45px 30px;
-            width:66%;
-            }
-
-            .header-wrapper{
-            font-size:18px;
-            margin-bottom:5px;
-            }
-
-            .content-wrapper{
-            display:flex;
-            justify-content:center;
-            }
-
-            .content-wrapper input,select{
-            Width:30%;
-            padding:10px;
-            font-size:10px;
-            }
-
-            i{
-            font-size:20px;
-            padding:5px;
-            }
-
-        }
-
-        @media (min-width:701px) and (max-width:1425px){
-            #main{
-            padding:50px 2%;
-            width:45%;
-            }
-
-            .header-wrapper{
-            font-size:24px;
-            margin-bottom:5px;
-            }
-
-            .content-wrapper{
-            display:flex;
-            justify-content:center;
-            }
-
-            .content-wrapper input,select{
-            Width:25%;
-            font-size:15px;
-            }
-
-            i{
-            font-size:25px;
-            }
-
-        }
-
-        
-            
-    </style>
 
 </head>
 <body>
@@ -209,41 +101,8 @@
         </div>
     </div>
     
-    
-    <script src="currency.js"></script>
-    <script>
-        const amountInput = document.getElementById("amount");
-        const firstSelection = document.getElementById("firstCurrencyOption");
-        const secondSelection = document.getElementById("secondCurrencyOption");
-        const resultInput = document.getElementById("result");
-
-        const currency1 = new currency();
-        
-
-        runEventListener();
-        function runEventListener(){
-            amountInput.addEventListener("input",exchange);
-            firstSelection.addEventListener("change",exchange);
-            secondSelection.addEventListener("change",exchange);
-        }
-
-        function exchange(){
-            const amount = Number(amountInput.value.trim()); //Input'un içindeki string dönüyor.
-            const firstOptionValue = firstSelection.options[firstSelection.selectedIndex].textContent;
-            const secondOptionValue = secondSelection.options[secondSelection.selectedIndex].textContent;
-        
-            currency1.exchange(amount,firstOptionValue,secondOptionValue)
-            .then((result) =>{
-                resultInput.value = result.toFixed(3); /*Noktadan sonra 3 karakter gözüksün diyoruz*/
-            })
+  <script src="script.js"></script>
   
-  
-        }
-
-      
-       
-
-    </script>
 </body>
 </html>
 
@@ -259,10 +118,6 @@ sadece ilk parametreden önce kullanılır. Sonraki parametreler ise & işareti 
 & İşareti: İlk parametreden sonra gelen tüm ek parametreler için kullanılır. Birden fazla
 parametreyi birbirine bağlamak için bu işaret kullanılır.
 
-ÖRNEK:
-URL: https://api.freecurrencyapi.com/v1/latest 
-api_key eklenmiş hali :  https://api.freecurrencyapi.com/v1/latest?apikey=fca_live_AXMUHbh0shfLJ5pxmrAuDzUatA4C4QVGgy4t0PsC
-api_key + base_currency eklenmiş hali :  https://api.freecurrencyapi.com/v1/latest?apikey=fca_live_AXMUHbh0shfLJ5pxmrAuDzUatA4C4QVGgy4t0PsC&base_currency=EUR
 -->
 
 
